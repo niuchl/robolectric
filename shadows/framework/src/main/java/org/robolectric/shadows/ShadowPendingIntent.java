@@ -183,7 +183,8 @@ public class ShadowPendingIntent {
       }
     } else if (isBroadcastIntent()) {
       for (Intent intentToSend : intentsToSend) {
-        context.sendBroadcast(intentToSend);
+        shadowInstrumentation.sendBroadcastWithPermission(
+            intentToSend, requiredPermission, context, code);
       }
     } else if (isServiceIntent()) {
       for (Intent intentToSend : intentsToSend) {
